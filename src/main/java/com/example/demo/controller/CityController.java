@@ -1,10 +1,14 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.City;
+import com.example.demo.model.User;
 import com.example.demo.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @RestController
 @RequestMapping("/api")
@@ -40,6 +44,10 @@ public class CityController {
         } else{
             return cityRepository.save(newCity);
         }
+    }
+    @GetMapping("/cities/size/{size}")
+    public Iterable<City> read(@PathVariable Integer size) {
+        return StreamSupport.stream(cityRepository.findAll().spliterator(), false).limit(size).collect(Collectors.toList());
     }
 
 }

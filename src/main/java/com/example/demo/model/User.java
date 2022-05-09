@@ -11,7 +11,7 @@ public class User {
     private String name;
     private String email;
     private String phone;
-    private Integer cityId;
+    private Long cityId;
 
     public Long getId() {
         return id;
@@ -45,11 +45,11 @@ public class User {
         this.phone = phone;
     }
 
-    public Integer getCityId() {
+    public Long getCityId() {
         return cityId;
     }
 
-    public void setCityId(Integer cityId) {
+    public void setCityId(Long cityId) {
         this.cityId = cityId;
     }
 }
